@@ -16,7 +16,12 @@ defmodule Sample.Enum do
 
 
   def add(list, val \\ 0) do
+    trace(val)
     [val | list]
+  end
+
+  defp trace(str) do
+    IO.puts "The value: #{str}"
   end
 end
 
@@ -38,6 +43,6 @@ end
 # IO.inspect Sample.Calendar.is_leep_year?(2016)
 # IO.inspect Sample.Calendar.is_leep_year?
 
-# IO.inspect Sample.Enum.add([1,2])
-IO.inspect Sample.Enum.first3([], :defaul)
-IO.inspect Sample.Enum.first3([1], :defaul)
+IO.inspect Sample.Enum.add([1,2])
+# IO.inspect Sample.Enum.first3([], :defaul)
+# IO.inspect Sample.Enum.first3([1], :defaul)
