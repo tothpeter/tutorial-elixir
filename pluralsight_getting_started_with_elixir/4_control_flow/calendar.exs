@@ -19,7 +19,7 @@ defmodule Sample.Calendar do
     case date do
       {1, _, _} -> "Very first day of month"
       {_, month, _} when month == 9 -> "I was born in Sept"
-      {_, _, _} -> "Noooo"
+      true -> "Noooo"
     end
   end
 
@@ -34,6 +34,6 @@ end
 
 # IO.inspect Sample.Calendar.day_abbr(:monday)
 # IO.inspect Sample.Calendar.day_abbr2(:monday2)
-# IO.inspect Sample.Calendar.describe_date({11, 9, 1988})
+IO.inspect Sample.Calendar.describe_date({11, 9, 1988})
 # IO.inspect File.cwd
-IO.inspect Sample.Calendar.file_opener("README.md")
+# IO.inspect Sample.Calendar.file_opener("README.md")
