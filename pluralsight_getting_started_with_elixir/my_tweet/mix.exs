@@ -15,8 +15,10 @@ defmodule MyTweet.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger, :quantum],
-     mod: {MyTweet.Application, []}]
+    [
+      extra_applications: [:logger, :quantum, :extwitter],
+      mod: { MyTweet.Application, [] }
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -30,7 +32,9 @@ defmodule MyTweet.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      { :quantum, "~> 1.9" }
+      { :quantum, "~> 1.9" },
+      { :extwitter, "~> 0.8.2" },
+      { :oauth, github: "tim/erlang-oauth" }
     ]
   end
 end
