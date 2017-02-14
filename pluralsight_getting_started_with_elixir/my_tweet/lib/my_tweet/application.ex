@@ -11,12 +11,16 @@ defmodule MyTweet.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Starts a worker by calling: MyTweet.Worker.start_link(arg1, arg2, arg3)
-      # worker(MyTweet.Worker, [arg1, arg2, arg3]),
+      worker(MyTweet.TweetServer, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: MyTweet.Supervisor]
-    Supervisor.start_link(children, opts)
+    main_pid = Supervisor.start_link(children, opts)
+    file_path = Path.join(:code.priv_dir(:my_tweet), "sample.txt")
+    MyTweet.Scheduler.schedule_file("* * * * *", file_path)
+
+    main_pid
   end
 end

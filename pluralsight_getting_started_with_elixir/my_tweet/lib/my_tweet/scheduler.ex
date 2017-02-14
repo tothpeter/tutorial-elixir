@@ -3,7 +3,7 @@ defmodule MyTweet.Scheduler do
     Quantum.add_job(schedule, fn ->
       file
       |> MyTweet.FileReader.get_string_to_tweet
-      |> IO.puts
+      |> MyTweet.TweetServer.tweet
     end)
   end
 end
