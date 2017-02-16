@@ -53,3 +53,40 @@ end
 greeter = fn name -> (fn -> "Hi #{name}" end) end
 peter_greeter = greeter.("Peter")
 IO.puts peter_greeter.()
+
+# Exercise: Functions-4
+prefix = fn str -> (fn str2 -> "#{str} #{str2}" end) end
+IO.inspect prefix.("First Name").("Last Name")
+
+
+times_2 = fn n -> n * 2 end
+apply = fn (fun, value) -> fun.(value) end
+
+IO.puts apply.(times_2, 2)
+
+
+defmodule Greeter do
+  def for(name, greeting) do
+    fn
+      (^name) -> "#{greeting} #{name}"
+      (_)     -> "Dunno"
+    end
+  end
+end
+
+gr = Greeter.for("Peter", "Hi")
+
+IO.inspect gr.("Peter")
+IO.inspect gr.("Peter2")
+
+
+speak = &IO.puts/1
+speak.("Puts")
+
+
+div_rem = &{ div(&1, &2), rem(&1, &2) }
+
+IO.inspect div_rem.(10, 3)
+
+# IO.inspect Enum.map [1,2,3,4], &(&1 + 2)
+# Enum.each [1,2,3,4], &IO.inspect/1
