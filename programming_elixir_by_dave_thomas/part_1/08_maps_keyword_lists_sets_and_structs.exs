@@ -65,4 +65,9 @@ defmodule Main do
   end
 end
 
-Main.run
+# Main.run
+
+set1 = MapSet.new [ 1, 2, 3 ]
+set2 = MapSet.new [ 3 ,4 ,5 ]
+IO.inspect MapSet.union(set1, set2)
+IO.inspect MapSet.intersection(set1, set2)
