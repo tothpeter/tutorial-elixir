@@ -26,6 +26,13 @@ defmodule MyList do
   def caesar([], _offset), do: []
   def caesar([head | tail], offset) when head + offset > ?z, do: [head + offset - 26 | caesar(tail, offset)]
   def caesar([head | tail], offset), do: [head + offset | caesar(tail, offset)]
+
+  def swap([ a, b | tail ]), do: [ b, a | swap(tail) ]
+  def swap([]), do: []
+  def swap([item]), do: [item]
+
+  def span(from, to) when from > to, do: []
+  def span(from, to), do: [ from | span(from + 1, to) ]
 end
 
 # IO.inspect MyList.map([1, 2, 3], &(&1 * &1))
@@ -45,4 +52,12 @@ end
 # IO.inspect MyList.my_max_tr([1])
 # IO.inspect MyList.my_max_tr([1, 4, 2, 3])
 
-IO.inspect MyList.caesar('ryvkve', 13)
+# IO.inspect MyList.caesar('ryvkve', 13)
+
+# IO.inspect MyList.swap([1,2,3])
+# IO.inspect MyList.swap([1,2,3,4])
+
+
+IO.inspect MyList.span(1, 4)
+IO.inspect MyList.span(4, 4)
+IO.inspect MyList.span(4, 1)
